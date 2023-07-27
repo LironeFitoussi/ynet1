@@ -1,0 +1,264 @@
+function TheButterflyReporterPlugin() {
+  // that's a constructor in JS
+  this.isOpened = false;
+  this.isListeningToEscapeKeyPress = false;
+  this.isEmbeddedInWix = false;
+
+  this.toggleButterflyReporter = function (
+    apiKey,
+    forcedCountryCode,
+    forcedLanguageCode,
+    shouldCloseOnFocusOut
+  ) {
+    if (this.isOpened) {
+      this.closeButterflyReporter();
+    } else {
+      this.openButterflyReporter(
+        apiKey,
+        forcedCountryCode,
+        forcedLanguageCode,
+        shouldCloseOnFocusOut
+      );
+    }
+  };
+
+  this.isMobilePortrait = function () {
+    return window.innerHeight / window.innerWidth > 1;
+  };
+
+  this.openButterflyReporter = function (
+    apiKey,
+    overrideCountryCode,
+    overrideLanguageCode,
+    shouldCloseOnFocusOut
+  ) {
+    var userLanguage =
+      window.navigator.userLanguage || window.navigator.language;
+
+    var components = userLanguage.split("-");
+    var languageCode = "en"; // default
+    if (
+      components.length > 0 &&
+      components[0].length &&
+      components[0].length == 2
+    ) {
+      languageCode = components[0];
+    }
+
+    if (overrideLanguageCode) {
+      languageCode = overrideLanguageCode;
+    }
+
+    var iframe = document.createElement("iframe");
+    iframe.setAttribute(
+      "src",
+      "https://butterfly-button.web.app/reporter/?language=" +
+        languageCode +
+        "&is-embedded-via-website=1" +
+        "&is-embedded-via-wix=" +
+        (this.isEmbeddedInWix ? "1" : "0") +
+        "&web-plugin-version=1.0.0" +
+        "&api_key=" +
+        apiKey +
+        "&override_country=" +
+        overrideCountryCode || "-"
+    );
+
+    var defaultIndex = Number.MAX_SAFE_INTEGER;
+    iframe.id = "the-butterfly-reporter-iframe";
+
+    iframe.style.width = "95%";
+    iframe.style.height = "95%";
+    iframe.style["border-style"] = "outset";
+    iframe.style.position = "relative";
+    iframe.style.display = "inline-block";
+    iframe.style.margin = "0px";
+    iframe.style.top = "10px";
+    iframe.style.background = "#fff";
+
+    var dismissingBarrier = document.createElement("div");
+
+    dismissingBarrier.style.position = "fixed";
+    dismissingBarrier.style.display = "block";
+    dismissingBarrier.style.width = "100%";
+    dismissingBarrier.style.height = "100%";
+    dismissingBarrier.style.top = "0px";
+    dismissingBarrier.style.left = "0px";
+    dismissingBarrier.style.bottom = "0px";
+    dismissingBarrier.style.cursor = "pointer";
+    dismissingBarrier.style["background-color"] = "rgba(0,0,0,0.5)";
+    dismissingBarrier.style["z-index"] = defaultIndex;
+    dismissingBarrier.style["text-align"] = "center";
+    dismissingBarrier.style.direction = "ltr";
+
+    dismissingBarrier.id = "butterfly-reporter-overlay";
+    dismissingBarrier.onclick = function () {
+      bf_ReporterPlugin.closeButterflyReporter();
+    };
+
+    document.body.appendChild(dismissingBarrier);
+
+    var closeButton = document.createElement("img");
+    closeButton.id = "the-butterfly-close-button";
+    closeButton.style.width = "50px";
+    closeButton.style.height = "50px";
+    closeButton.style.display = "block";
+    closeButton.style.top = "0px";
+    closeButton.style.cursor = "pointer";
+    closeButton.style.position = "relative";
+    closeButton.style.right = "25px";
+
+    var closeButtonContainer = document.createElement("div");
+    closeButtonContainer.style = iframe.style;
+    closeButtonContainer.style.top = "0px";
+    closeButtonContainer.style.height = "50px";
+    closeButtonContainer.style.display = "inline-block";
+    closeButtonContainer.style.width = "100%";
+    // closeButtonContainer.style["max-width"] = "600px";
+    closeButtonContainer.style.position = "fixed";
+
+    closeButton.src = "https://butterfly-button.web.app/img/close-button.png";
+    closeButton.alt = "close Butterfly reporter";
+    closeButton.onclick = function () {
+      bf_ReporterPlugin.closeButterflyReporter();
+    };
+    if (!this.isListeningToEscapeKeyPress) {
+      this.isListeningToEscapeKeyPress = true;
+      document.addEventListener("keyup", (e) => {
+        if (
+          e.key === "Escape" &&
+          bf_ReporterPlugin &&
+          bf_ReporterPlugin.isOpened &&
+          document.visibilityState == "visible"
+        ) {
+          bf_ReporterPlugin.closeButterflyReporter();
+        }
+      });
+    }
+
+    //document.body.addEventListener("keypress", (e) => {}, { once: true });
+    dismissingBarrier.appendChild(iframe);
+    closeButtonContainer.appendChild(closeButton);
+    dismissingBarrier.appendChild(closeButtonContainer);
+
+    if (shouldCloseOnFocusOut === 1 || shouldCloseOnFocusOut === true) {
+      document.addEventListener(
+        "visibilitychange",
+        (event) => {
+          if (
+            bf_ReporterPlugin &&
+            bf_ReporterPlugin.isOpened &&
+            document.visibilityState != "visible"
+          ) {
+            bf_ReporterPlugin.closeButterflyReporter();
+          }
+        },
+        { once: true }
+      );
+    }
+
+    this.isOpened = true;
+  };
+
+  this.closeButterflyReporter = function () {
+    var iframe = document.querySelector("#the-butterfly-reporter-iframe");
+    if (iframe) {
+      iframe.parentNode.removeChild(iframe);
+    }
+
+    var overlay = document.querySelector("#butterfly-reporter-overlay");
+    if (overlay) {
+      overlay.parentNode.removeChild(overlay);
+    }
+
+    var closeButton = document.querySelector("#the-butterfly-close-button");
+    if (closeButton) {
+      closeButton.parentNode.removeChild(closeButton);
+    }
+
+    this.isOpened = false;
+  };
+
+  let params = new URL(document.location).searchParams;
+  let isAutoOpenEnabled = params.get("a1") == "b2";
+
+  if (isAutoOpenEnabled) {
+    setTimeout(() => {
+      var hostApiKey = "";
+      try {
+        hostApiKey = bf_apiKey || "";
+      } catch (error) {
+        //
+      }
+
+      if (!hostApiKey.length) {
+        try {
+          let wrappedHostApiKey = document
+            .getElementsByTagName("html")[0]
+            .innerHTML.split("bf_ReporterPlugin.toggle")[1]
+            .split(")")[0]
+            .split("(")[1];
+
+          var quotationMarks = "&quot;";
+          if (wrappedHostApiKey.indexOf("'") >= 0) {
+            quotationMarks = "'";
+          }
+          if (wrappedHostApiKey.indexOf('"') >= 0) {
+            quotationMarks = '"';
+          }
+
+          hostApiKey = wrappedHostApiKey.split(quotationMarks)[1];
+        } catch (error) {
+          //console.log(error);
+        }
+      }
+
+      if (hostApiKey && hostApiKey.length) {
+        this.toggleButterflyReporter(hostApiKey);
+      }
+    }, 1000);
+
+    window.history.replaceState(
+      "",
+      "",
+      removeURLParameter(window.location.href, "a1")
+    );
+  }
+}
+
+function removeURLParameter(url, key) {
+  var theAnchor = null;
+  var newQueryString = "";
+  var urlComponents = url.split("?");
+  var baseURL = urlComponents[0];
+  var existingQueryString = urlComponents[1];
+  var ampersandOrEmpty = "";
+
+  if (existingQueryString) {
+    var tmpAnchor = existingQueryString.split("#");
+    var params = tmpAnchor[0];
+    theAnchor = tmpAnchor[1];
+    if (theAnchor) existingQueryString = params;
+
+    urlComponents = existingQueryString.split("&");
+
+    for (var i = 0; i < urlComponents.length; i++) {
+      if (urlComponents[i].split("=")[0] != key) {
+        newQueryString += ampersandOrEmpty + urlComponents[i];
+        ampersandOrEmpty = "&";
+      }
+    }
+  } else {
+    var tmpAnchor = baseURL.split("#");
+    var params = tmpAnchor[0];
+    theAnchor = tmpAnchor[1];
+
+    if (params) {
+      baseURL = params;
+    }
+  }
+
+  return baseURL + (newQueryString.length ? "?" + newQueryString : "");
+}
+
+var bf_ReporterPlugin = new TheButterflyReporterPlugin();
