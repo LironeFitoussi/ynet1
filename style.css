@@ -139,14 +139,15 @@ section {
 article {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: right;
     padding-left: 10%;
     height: 100%;
 }
 
 article > h1 {
-    font-size: 1.5rem;
+    font-size: 3rem;
+    margin: 0;
 }
 
 article > span {
