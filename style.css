@@ -1,15 +1,11 @@
-body {
-    margin: 0;
-    padding: 0 12.5%;
-    text-align: center;
+* {
+    font-family: "calibri";
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    height: 120px;
-    margin: 0 auto;
-    align-items: flex-end;
+body {
+    margin: 0;
+    padding: 0 18%;
+    text-align: center;
 }
 
 a {
@@ -17,30 +13,198 @@ a {
     color: #000;
 }
 .header-ad {
-    margin: auto;
+    display: flex;
+    justify-content: center;
     border: 2px solid #ffffee;
-    align-items: center;
 }
 
-.members {
+.top-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 133px;
+    margin: 0 auto;
+    align-items: flex-end;
+}
+
+.top-header > img {
+    width: 15% ;
+}
+
+.top-item {
+    display: flex;
+    gap: 5%;
     height: 28px;
 }
-a.ynet-plus {
+
+.header-element{
     display: flex;
-    border: 1px solid #000;
     align-items: center;
-    border-radius: 16px;
     width: fit-content;
-    height: 100%;
-    font-weight: 700;
+    height: 75%;
     padding: 2%;
 }
 
-.ynet-plus > p {
+.header-element > p {
     margin: 0 5px;
     width: max-content;
 }
 
-.ynet-plus > img {
+.header-element > img {
     height: 100%;
+}
+
+.info {
+    position: relative;
+    right: 4rem;
+}
+
+.ynet-plus {
+    border: 1px solid #000;
+    border-radius: 2rem;
+    font-weight: bold;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: rgb(222, 26, 26);
+    margin-top: 25px;
+    height: fit-content;
+}
+
+nav > a {
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+nav > a:hover {
+    font-weight: bold;
+}
+
+.nav-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 24px;
+}
+
+.nav-element {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-element > img {
+    width: 15px;
+    margin-right: 5px;
+}
+
+.nav-element > p {
+    color: #fff;
+}
+
+.nav-element.more {
+    border: 2px solid #fff;
+    border-radius: 15px;
+    margin: 3%;
+    padding: 0 10px;
+    height: 15px;
+    margin-left: 20px;
+}
+
+.hot-news {
+    background-color: #f3f8f9;
+    height: 100px;
+    margin-top: 28px;
+}
+
+section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.highlight {
+    margin-top: 28px;
+    height: fit-content;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
+    padding-left: 10%;
+    height: 100%;
+}
+
+article > h1 {
+    font-size: 1.5rem;
+}
+
+article > span {
+    font-size: 12px;
+    color: #69696990;    
+}
+
+.highlight > img {
+    width: 100%;
+}
+
+.sec2 {
+    height: 517;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.right-ad {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 15%;
 }
