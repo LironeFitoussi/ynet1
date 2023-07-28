@@ -434,6 +434,18 @@ div.top4 {
  
 /* SECTION 6 */
 
+.ext-article {
+    display: grid;
+    border: solid 1px;
+    border-top: none;
+    padding: 20px 10px;
+    height: fit-content;
+}
+
+.ext-article > a {
+    justify-self: left;
+}
+
 .ext-title {
     display: flex;
     align-items: center;
@@ -452,6 +464,18 @@ div.top4 {
 .ext-logo {
     height: 18px;
     border-radius: 50px;
+}
+
+.ext-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+    text-align: right;
+}
+
+.ext-item > img{
+    height: 100%;
+    width: 100%;
 }
 
 
