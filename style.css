@@ -481,15 +481,97 @@ div.top4 {
 /*SECTION 7 */
 .sec7 {
     display: flex;
-    background: #090d15;
-    padding: 26px 30px;
-    box-sizing: border-box;
     flex-direction: column;
     align-items: center;
+    background: #090d15;
+    padding: 26px 30px;
+    box-sizing: border-box; 
+    height: fit-content; 
+}
+
+.ynet-plus-header {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.ynet-plus-header > a {
+    color: #fff;
+    border: solid 2px #fff;
+    padding: 10px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.ynet-plus-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+.ypi {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 275px;
+    padding: 5px;
+    text-align: right;
+    background-repeat: no-repeat;
+    box-shadow:  inset 0px -35px 100px 0px #000000; 
+    color: #fff;
+}
+
+.ypi > p {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.ypi > span {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+}
+
+.ypi-item1 {
+    background-image: url(./images/ypi1.jpg);
+}
+
+.ypi-item2 {
+    background-image: url(./images/ypi2.jpg);    
+}
+
+.ypi-item3 {
+    background-image: url(./images/ypi3.jpg);
+}
+
+.ypi-item4 {
+    background-image: url(./images/ypi4.jpg);
+}
+
+.ypi-item5 {
+    background-image: url(./images/ypi5.jpg);
+}
+
+.ypi-item6 {
+    background-image: url(./images/ypi6.jpg);
 }
 
 
-
+.ynet-plus-bottom > a {
+    border: 2px solid #fff;
+    border-radius: 25px;
+    padding: 10px;
+    color: #fff;
+}
 
 
 
