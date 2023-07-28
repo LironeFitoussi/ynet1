@@ -12,6 +12,11 @@ a {
     text-decoration: none;
     color: #000;
 }
+
+h1 {
+    margin: 0;
+}
+
 .header-ad {
     display: flex;
     justify-content: center;
@@ -149,7 +154,6 @@ article {
 
 article > h1 {
     font-size: 3rem;
-    margin: 0;
 }
 
 article > span {
@@ -198,7 +202,6 @@ div.top4 {
 
 .top4-el-txt > h1 {
     font-size: 20px;
-    margin: 0;
 }
 
 .top4-el-txt > p {
@@ -249,6 +252,16 @@ div.top4 {
     grid-row-end: 3;
 }
 
+.sec3 {
+    height: fit-content;
+        width: 100%;
+}
+
+.sec3 > div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 .subsec-title > h1 {
     color: #fff;
     background-color: #1417AC;
@@ -265,9 +278,71 @@ div.top4 {
     padding: 7px 18px;
 }
 
+.title-el {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    height: 100%;
+    width: 100%;
+}
 .title {
     display: grid;
+    grid-template-rows: 1fr .5fr .25fr;
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    text-align: right;
+}
+
+.title > img {
+    height: 100%;
+    width: 100%;
+}
+
+.title > h1 {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.title > span {
+    font-size: 12px;
+    color: #69696990;
+}
+
+
+/*3rd Section*/
+.sec4 {
+    height: fit-content;
+    width: 100%;
+}
+
+.lst-nws {
+
+}
+
+.news {
+    width: 100%;
+}
+.bign-el {
+    width: auto;
+    height: auto;
+}
+
+.ads-block-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: 15px;
+    height: min-content;
+}
+
+.ads-block-2 > img {
+    width: 100%;
+}
+
+.yad2 {
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
  
 
