@@ -315,7 +315,10 @@ div.top4 {
 }
 
 .titles-news {
+    display: flex;
+    flex-direction: column;
     height: 100%;
+    justify-content: space-between;
 }
 
 .lst-nws {
@@ -360,16 +363,34 @@ div.top4 {
 
 .big-news {
     display: flex;
+    justify-content: space-around;
     flex-direction: column;
-    gap: 20px;
 }
 
 .weather-element {
-height: 30px;
+    display: flex;
+    height: 30px;
+    gap: 2px;
+    align-items:end;
+    justify-content: right;
 }
 
 .weather-element > img {
     height: 50%;
+}
+.weather-element > h1 {
+    height: 90%;
+}
+
+.danirup {
+    display: flex;
+    justify-content: space-around;
+} 
+.danirup > p {
+    font-size: 12px;
+}
+.danirup > img {
+    width: 20%;
 }
 
 .ads-block-2 {
@@ -388,6 +409,13 @@ height: 30px;
 .yad2 {
     grid-column-start: 1;
     grid-column-end: 3;
+}
+
+/*SECTION 5*/
+
+.sport-el , .economy-el {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
  
 
