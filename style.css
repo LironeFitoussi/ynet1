@@ -129,6 +129,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .highlight {
@@ -172,8 +173,11 @@ div.top4 {
 
 .top4-el {
     height: 20%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     justify-content: space-between;
+    hei
 } 
 
 .top4-el > img {
@@ -194,6 +198,7 @@ div.top4 {
 }
 
 .top4-el-txt > p {
+    font-size: smaller;
     font-weight: bold;
     margin: 0;
 }
