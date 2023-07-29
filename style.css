@@ -1,5 +1,11 @@
+@font-face {
+    font-family: Narkis-block;
+    src: url(./narkis_block.ttf);
+  }
+
+
 * {
-    font-family: "calibri";
+    font-family: "Narkis-block";
 }
 
 body {
