@@ -167,13 +167,46 @@ nav > a:hover {
 }
 
 .hot-news {
+    display: flex;
+    flex-direction: row-reverse;
     background-color: #f3f8f9;
-    height: 120px;
+    height: 85px;
     margin-top: 28px;
+    padding: 20px;
+    width: fit-content;
 }
 
-.hot-news > h1 {
+.hn-el {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: right;
+    direction: rtl;
+    padding-left: 15px;
+    border-left: 1px #000 dotted;
+    width: 170px;
+}
 
+.hn-el > h1 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.hn-el > span {
+    font-size: 15px;
+}
+
+.main-news .hn-el:hover {
+    color: #1417AC;
+}
+
+.more-news {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #DE1A1A;
 }
 
 section {
