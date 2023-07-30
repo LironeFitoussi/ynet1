@@ -199,6 +199,7 @@ nav > a:hover {
 
 .one-news:hover + .hb-one{
     display: flex;
+    right: 15%;
 }
 
 .two-news:hover + .hb-two{
@@ -225,7 +226,7 @@ nav > a:hover {
     display: flex;
     flex-direction: row-reverse;
     background-color: #f3f8f9;
-    justify-content: space-between;
+    justify-content: center;
     height: 85px;
     margin-top: 28px;
     padding: 20px;
@@ -257,6 +258,7 @@ nav > a:hover {
 }
 
 .more-news {
+    border: none;
     display: flex;
     flex-direction: row;
     align-items: center;
