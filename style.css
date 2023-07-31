@@ -198,29 +198,14 @@ nav > a:hover {
 
 .one-news:hover + .hb-one{
     display: flex;
-    transform: translateY(50px);
+    transform: translateY(50px) translateX(-160px);
 }
 
-.two-news:hover + .hb-two{
+.contain-ht {
     display: flex;
-    right: 25%;
+    flex-direction: column;
+    justify-content: center;
 }
-
-.three-news:hover + .hb-three{
-    display: flex;
-    right: 37%;
-}
-
-.four-news:hover + .hb-four{
-    display: flex;
-    right: 50%;
-}
-
-.five-news:hover + .hb-five{
-    display: flex;
-    right: 60%;
-}
-
 .hot-news {
     display: flex;
     flex-direction: row-reverse;
@@ -236,6 +221,7 @@ nav > a:hover {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
+    justify-content: center;
     text-align: right;
     direction: rtl;
     padding-left: 15px;
