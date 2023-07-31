@@ -535,6 +535,7 @@ div.top4 {
 
 /*SECTION 5*/
 
+
 .sport-el , .economy-el {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -544,6 +545,7 @@ div.top4 {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    height: 100%;
 }
 
 .el-it {
@@ -556,12 +558,21 @@ div.top4 {
  
 /* SECTION 6 */
 
+.sec6 {
+    height: fit-content;
+}
+
+.sportone, .calcalist {
+    height: 100%;
+}
+
 .ext-article {
     display: grid;
     border: solid 1px;
     border-top: none;
+    align-content: space-between;
     padding: 20px 10px;
-    height: fit-content;
+    height: 200px;
 }
 
 .ext-article > a {
@@ -582,7 +593,10 @@ div.top4 {
     display: flex;
     text-align: center;
     gap: 8px;
+    height: fit-content;
 }
+
+
 .ext-logo {
     height: 18px;
     border-radius: 50px;
@@ -597,7 +611,7 @@ div.top4 {
 
 .ext-item > img{
     height: 100%;
-    width: 200px;
+    width: 100%;
 }
 
 /*SECTION 7 */
