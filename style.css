@@ -197,7 +197,7 @@ nav > a:hover {
 
 .one-news:hover + .hb-one{
     display: flex;
-    transform: translateY(80%) translateX(-165px);
+    transform: translateY(110px) translateX(-165px);
 }
 
 .contain-ht {
