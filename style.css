@@ -559,7 +559,7 @@ div.top4 {
 /* SECTION 6 */
 
 .sec6 {
-    height: 60%;
+    height: fit-content;
 }
 
 .sportone, .calcalist {
