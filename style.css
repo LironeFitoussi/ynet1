@@ -220,9 +220,10 @@ nav > a:hover {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: right;
     direction: rtl;
+    height: 100%;
     padding-left: 15px;
     border-left: 1px #000 dotted;
     width: 170px;
